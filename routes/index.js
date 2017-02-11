@@ -2,7 +2,7 @@ let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
 
-let game = require('../config/game');
+let portfolio = require('../config/portfolio');
 
 // Global Route Variables
 let currentDate = new Date();
@@ -17,15 +17,15 @@ router.get('/', (req, res, next) => {
 
 /* GET about page. */
 router.get('/about', (req, res, next) => {
-  // find all games in the games collection
-  game.find((err, games) => {
+  
+  portfolio.find((err, portfolio) => {
     if (err) {
       return console.error(err);
     }
     else {
       res.render('content/about', {
         title: 'About',
-        games: games
+        portfolio: portfolio
       });
     }
 
